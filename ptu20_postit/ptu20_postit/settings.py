@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-6w4+00$q3he5mw=ry4+p$3$s9qb5p_9r+h)g*pxt%9cwzvb4s5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ptu20.postit']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'ptu20.midonow.fi']
 
 # Application definition
 
