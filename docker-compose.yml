@@ -39,6 +39,18 @@ services:
     restart: always
     ports:
       - 80:80
+      - 443:443
     volumes:
       - ./ptu20_postit/media:/app/media
       - ./ptu20_postit/static:/app/static
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+  certbot:
+    image: certbot/certbot
+    container_name: ptu20postit.letsencrypt
+    restart: unless-stopped
+    volumes:
+      - ./nginx/certbot/conf:/etc/letsencrypt
+      - ./nginx/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 60h & wait $${!}; done;'"
